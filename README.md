@@ -23,7 +23,7 @@ Este proyecto demuestra un enfoque de Resiliencia adaptativa para pruebas automa
 /src → Código fuente principal
 /tests → Pruebas automatizadas
 /config → Configs opcionales (esquemas, mapeos, etc.)
-README.md → Este archivo
+
 
 ## Requisitos
 
@@ -38,6 +38,15 @@ README.md → Este archivo
 ## Autoría
 
 Este proyecto fue desarrollado como parte del concurso técnico de InterSystems 2025.
+🔗 El enlace al artículo completo acá.
 
+# Crear entorno virtual (opcional pero recomendado)
+python3.10 -m venv venv
+source venv/bin/activate
+
+# Instalar dependencias
+pip install -r requirements.txt
+
+# Justificacion de diseño
+Se optó por encapsular la consulta SQL en una clase ObjectScript (Daniela.DataAPI) porque acceder directamente a los registros mediante la Python DB API presentaba restricciones de permisos y falta de visibilidad sobre las estructuras internas. La solución implementada aprovecha la capacidad de IRIS para exponer dinámicamente objetos JSON a través de métodos invocables, permitiendo una conexión segura, controlada y estructurada desde Python.
 ---
-🔗 Pronto vas a encontrar el enlace al artículo completo acá.
