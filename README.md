@@ -21,10 +21,15 @@ Este proyecto demuestra un enfoque de resiliencia adaptativa para pruebas automa
 ## Estructura del repositorio
 
 /src                → Código fuente principal
+
 /tests              → Pruebas automatizadas
+
 /config             → Configs opcionales 
+
 README.md           → Este archivo
+
 requirements.txt    → Dependencias del entorno
+
 venv/               → Entorno virtual (excluido en Git)
 
 ## Requisitos
@@ -33,7 +38,7 @@ venv/               → Entorno virtual (excluido en Git)
 - Python 3.8+
 - Acceso de lectura a la base IRIS (con usuario, host y puerto)
 
-## Instalar dependencias
+### Instalar dependencias
 
 pip install -r requirements.txt
 
@@ -43,18 +48,17 @@ Se incluye una versión estricta del test (que falla si cambia la estructura) y 
 /tests/
 
 ├── test_api_strict.py      ← Falla si cambia el JSON
+
 ├── test_api_adaptive.py    ← Incluye lógica adaptativa (warning, no crash)
 
 ### Ejecutar pruebas
 
 pytest -s tests/test_api_strict.py
+
 pytest -s tests/test_api_adaptive.py
-
-## Justificación de diseño
-
-Se optó por encapsular la consulta SQL en una clase ObjectScript (Daniela.DataAPI) porque acceder directamente a los registros mediante la Python DB API presentó restricciones de permisos y visibilidad sobre estructuras internas. La solución implementada aprovecha la capacidad de IRIS para exponer dinámicamente objetos JSON a través de métodos invocables, permitiendo una conexión segura, controlada y estructurada desde Python.
 
 ## Autoría
 
 Este proyecto fue desarrollado como parte del concurso técnico de InterSystems 2025.
+
 🔗 Enlace al artículo completo: próximamente
