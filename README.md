@@ -45,7 +45,7 @@ Se incluye una versión estricta del test (que falla si cambia la estructura) y 
 
 pytest -s tests/test_api_strict.py
 
-pytest -s tests/test_api_adaptive.py
+pytest -rA tests/test_api_adaptive.py
 
 ## Autoría
 
