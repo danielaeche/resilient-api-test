@@ -47,6 +47,10 @@ pytest -s tests/test_api_strict.py
 
 pytest -rA tests/test_api_adaptive.py
 
+### Notas sobre diseño
+Esta implementación usa una clase ObjectScript como capa intermedia para estructurar los datos en JSON.
+Por restricciones de entorno, no se utilizó acceso directo a las tablas mediante Python DB API, lo cual sería el enfoque ideal para validar en tiempo real la estructura del sistema.
+
 ## Autoría
 
 Este proyecto fue desarrollado como parte del concurso técnico de InterSystems 2025.
