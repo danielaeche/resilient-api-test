@@ -1,21 +1,9 @@
-import json
-import irisnative
+import pytest
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src')))
+from db_connect import get_api_data
 
-def get_api_data():
-    host = "localhost"
-    port = 1972
-    namespace = "USER"
-    username = "admin"
-    password = "123456"
-
-    connection = irisnative.createConnection(host, port, namespace, username, password)
-    iris = irisnative.createIris(connection)
-
-    json_data = iris.classMethodValue("Daniela.DataAPI", "GetAllPatients")
-    parsed = json.loads(str(json_data))
-
-    connection.close()
-    return parsed
 
 def test_json_structure_is_list():
     data = get_api_data()
