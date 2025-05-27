@@ -1,22 +1,12 @@
 # Resiliencia adaptativa para Pruebas Automatizadas de APIs usando InterSystems IRIS
 
-Este proyecto demuestra un enfoque de resiliencia adaptativa para pruebas automatizadas de APIs REST ante cambios en la estructura del JSON. La solución se basa en una conexión desde Python a una clase personalizada en InterSystems IRIS escrita en ObjectScript, lo que permite validar dinámicamente si los cambios son coherentes con el modelo de datos, sin acceder directamente a la base mediante la Python DB API.
+Este repositorio contiene un proyecto técnico de validación estructural dinámica ante cambios en la respuesta JSON de una API respaldada por InterSystems IRIS.
 
-## Objetivo
+Incluye pruebas automatizadas en Python que contrastan dos enfoques:
 
-- Evitar falsos negativos en pruebas automatizadas cuando se agregan, eliminan o reordenan campos del JSON.
-- Consultar la base de datos real para entender si el cambio es válido o debe reportarse como error.
-- Proponer una arquitectura resiliente, adaptable y extensible para entornos complejos.
+- **Validación estricta**: falla ante cualquier diferencia estructural.
+- **Validación adaptativa**: tolera cambios menores y registra advertencias.
 
-## Tecnologías usadas
-
-- Python 3
-- Pytest
-- Requests
-- InterSystems IRIS (como backend de datos)
-- `irisnative` (driver de conexión desde Python)
-- JSONSchema (opcional)
-- FastAPI o Flask (opcional, para simular endpoints)
 
 ## Estructura del repositorio
 
