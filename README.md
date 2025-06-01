@@ -1,4 +1,4 @@
-# Validacion estructural daptativa para Pruebas Automatizadas de APIs usando InterSystems IRIS
+# Validacion estructural adaptativa para Pruebas Automatizadas de APIs usando InterSystems IRIS
 
 Este repositorio contiene un proyecto técnico de validación estructural adaptativa ante cambios en la respuesta JSON de datos expuestos de InterSystems IRIS.
 
@@ -11,13 +11,21 @@ Incluye pruebas automatizadas en Python que contrastan dos enfoques:
 ## Estructura del repositorio
 
 /src/ → Código fuente principal (conexión a IRIS)
+
 /schema/ → Lógica de clasificación, logueo y manejo de resultados
+
 /tests/ → Pruebas automatizadas
+
 /config/ → Carpeta reservada para futuras configuraciones (vacía)
+
 /structure_warnings_log.ndjson → Registro estructurado de cambios detectados
+
 /conftest.py → Configuración para que pytest detecte módulos correctamente
+
 requirements.txt → Dependencias de Python
+
 README.md → Este archivo
+
 venv/→ Entorno virtual (excluido en Git)
 
 ## Requisitos
@@ -39,14 +47,9 @@ Si queres automatizar la ejecución, podés crear un archivo docker-compose.yml 
   
 ## Instalación
 
-1. Cloná el repositorio:
+1. git clone https://github.com/danielaeche/resilient-api-test.git
 
-git clone https://github.com/danielaeche/resilient-api-test.git
-cd resilient-api-test
-
-2. Instala dependencias
-
-pip install -r requirements.txt
+2. pip install -r requirements.txt
 
 ## Cómo ejecutar las pruebas
 Desde la raíz del proyecto:
@@ -55,9 +58,9 @@ Desde la raíz del proyecto:
     pytest -rA tests/test_api_adaptive.py
 
 ### Descripción de tests:
-/tests/test_api_strict.py: Test que falla ante cualquier diferencia con la estructura esperada.
+- /tests/test_api_strict.py: Test que falla ante cualquier diferencia con la estructura esperada.
 
-/tests/test_api_adaptive.py: Test que valida la estructura de forma adaptativa, clasific
+- /tests/test_api_adaptive.py: Test que valida la estructura de forma adaptativa, clasifica el cambio como stable, acceptable o critical y guarda trazabilidad en formato NDJSON.
 
 ## Notas sobre diseño
 Esta implementación usa una clase ObjectScript como capa intermedia para estructurar los datos en JSON.
