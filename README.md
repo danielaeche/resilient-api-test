@@ -10,17 +10,15 @@ Incluye pruebas automatizadas en Python que contrastan dos enfoques:
 
 ## Estructura del repositorio
 
-/src                → Código fuente principal
-
-/tests              → Pruebas automatizadas
-
-/config             → Configs opcionales 
-
-README.md           → Este archivo
-
-requirements.txt    → Dependencias del entorno
-
-venv/               → Entorno virtual (excluido en Git)
+/src/ → Código fuente principal (conexión a IRIS)
+/schema/ → Lógica de clasificación, logueo y manejo de resultados
+/tests/ → Pruebas automatizadas
+/config/ → Carpeta reservada para futuras configuraciones (vacía)
+/structure_warnings_log.ndjson → Registro estructurado de cambios detectados
+/conftest.py → Configuración para que pytest detecte módulos correctamente
+requirements.txt → Dependencias de Python
+README.md → Este archivo
+venv/→ Entorno virtual (excluido en Git)
 
 ## Requisitos
 
@@ -39,27 +37,29 @@ Podés correr una imagen de IRIS manualmente desde Docker para simular la base d
 2. **Con `docker-compose`** *(opcional, no incluido en este repo)*:
 Si queres automatizar la ejecución, podés crear un archivo docker-compose.yml por tu cuenta.
   
-   
-### Instalar dependencias
+## Instalación
+
+1. Cloná el repositorio:
+
+git clone https://github.com/danielaeche/resilient-api-test.git
+cd resilient-api-test
+
+2. Instala dependencias
 
 pip install -r requirements.txt
 
-## Tests
-Se incluye una versión estricta del test (que falla si cambia la estructura) y una versión con validación adaptativa, que absorbe diferencias no críticas sin comprometer la integridad del test.
+## Cómo ejecutar las pruebas
+Desde la raíz del proyecto:
 
-/tests/
+    pytest -s tests/test_api_strict.py
+    pytest -rA tests/test_api_adaptive.py
 
-├── test_api_strict.py      ← Falla si cambia el JSON
+### Descripción de tests:
+/tests/test_api_strict.py: Test que falla ante cualquier diferencia con la estructura esperada.
 
-├── test_api_adaptive.py    ← Incluye lógica adaptativa (warning, no crash)
+/tests/test_api_adaptive.py: Test que valida la estructura de forma adaptativa, clasific
 
-### Ejecutar pruebas
-
-pytest -s tests/test_api_strict.py
-
-pytest -rA tests/test_api_adaptive.py
-
-### Notas sobre diseño
+## Notas sobre diseño
 Esta implementación usa una clase ObjectScript como capa intermedia para estructurar los datos en JSON.
 Por restricciones de entorno, no se utilizó acceso directo a las tablas mediante Python DB API, lo cual sería el enfoque ideal para validar en tiempo real la estructura del sistema.
 
