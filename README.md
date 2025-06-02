@@ -70,4 +70,4 @@ Por restricciones de entorno, no se utilizó acceso directo a las tablas mediant
 
 Este proyecto fue desarrollado como parte del concurso técnico de InterSystems 2025.
 
-🔗 Enlace al artículo completo: 
+🔗 Enlace al artículo completo: https://es.community.intersystems.com/post/validaci%C3%B3n-estructural-adaptativa-de-esquemas-json-expuestos-desde-intersystems-iris-un-enfoque
