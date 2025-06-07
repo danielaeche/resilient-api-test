@@ -3,8 +3,8 @@ import json
 
 def get_api_data():
     """
-    Conecta con InterSystems IRIS y retorna la respuesta JSON como diccionario de Python.
-    Invoca el método GetAllPatients de la clase Dpacientes.DataAPI.
+    Connects to InterSystems IRIS and returns the JSON response as a Python dictionary.
+    Calls the GetAllPatients method from the Dpacientes.DataAPI class.
     """
     host = "localhost"
     port = 1972
@@ -12,15 +12,15 @@ def get_api_data():
     username = "admin"
     password = "123456"
 
-    # Establecer conexión
+    # Establish connection
     connection = irisnative.createConnection(host, port, namespace, username, password)
     iris = irisnative.createIris(connection)
 
-    # Llamar al método definido en IRIS que devuelve un %DynamicArray con pacientes
+    # Call the method defined in IRIS that returns a %DynamicArray with patient data
     raw_data = iris.classMethodValue("Dpacientes.DataAPI", "GetAllPatients")
 
-    # Cerrar la conexión
+    # Close the connection
     connection.close()
 
-    # Convertir de string JSON a objeto Python
+    # Convert JSON string to Python object
     return json.loads(str(raw_data))
