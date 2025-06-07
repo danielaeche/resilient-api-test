@@ -1,1 +1,4 @@
 intersystems_irispython==5.1.2
+jsonschema==4.24.0
+pytest==8.3.5
+
