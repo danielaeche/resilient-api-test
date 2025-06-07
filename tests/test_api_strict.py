@@ -1,9 +1,6 @@
 import pytest
-import sys
-import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src')))
-from db_connect import get_api_data
 
+from src.db_connect import get_api_data
 
 @pytest.fixture(scope="module")
 def api_data():
@@ -11,7 +8,6 @@ def api_data():
 
 def test_json_structure_is_list(api_data):
     assert isinstance(api_data, list), "La respuesta no es una lista"
-
 
 def test_each_item_has_expected_keys(api_data):
     expected_keys = {"id", "name", "age"}
